@@ -1,0 +1,31 @@
+.vehicle-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 50px;
+  }
+  
+  .vehicle-card {
+    width:80%;
+    margin: auto;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 40px; 
+
+  }
+
+  .book-vehicle-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
