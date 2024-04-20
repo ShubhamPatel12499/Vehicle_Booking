@@ -1,12 +1,11 @@
 import './App.css';
-import BookingForm from './Pages/BookingForm';
-import VehiclesPage from './Pages/VehiclesPage';
+import { AllRoutes } from './Routes/AllRoutes';
 
 
 function App() {
   return (
     <div className="App">
-       <VehiclesPage />
+       <AllRoutes />
     </div>
   );
 }

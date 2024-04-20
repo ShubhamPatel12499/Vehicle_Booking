@@ -54,8 +54,10 @@ const BookingForm = () => {
     };
     console.log(formData);
     const response = await axios.post('http://localhost:8080/booking/addBooking', formData);
+      alert("Booked successfully!!")
       console.log('Booking created successfully:', response.data);
     } catch (error) {
+      alert("Error creating booking, Please try again!")
       console.error('Error creating booking:', error);
     }
   };
