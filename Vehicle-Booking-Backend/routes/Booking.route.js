@@ -13,7 +13,8 @@ bookingRouter.post("/addBooking", async (req, res) => {
 
         // Check for overlapping bookings
         const existingBooking = await bookingModel.findOne({
-            vehicleId,
+            vehicleType,
+            specificModel,
             $or: [
                 { startDate: { $lte: endDate }, endDate: { $gte: startDate } },
                 { startDate: { $lte: startDate }, endDate: { $gte: startDate } }
@@ -21,7 +22,7 @@ bookingRouter.post("/addBooking", async (req, res) => {
         });
 
         if (existingBooking) {
-            return res.status(400).send("Booking conflicts with existing booking");
+            return res.status(400).send("Oops This Vehicle is already booked for the specified date range, Please go for another one!");
         }
 
         // Create new booking
@@ -45,6 +46,18 @@ bookingRouter.post("/addBooking", async (req, res) => {
     }
 });
 
+// For Fetch all bookings
+bookingRouter.get("/allBookings", async (req, res) => {
+    try {
+      const bookings = await bookingModel.find();
+      res.status(200).json(bookings);
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+      res.status(500).send("Error fetching bookings");
+    }
+  });
+
 module.exports = {
     bookingRouter
 };
+

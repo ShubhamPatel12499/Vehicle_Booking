@@ -1,8 +1,8 @@
 const express=require("express")
 const {connection}=require("./config/db")
 const {userRouter}=require("./routes/User.route")
-const { bookingRouter } = require("./routes/booking.route")
-const { vehicleRouter } = require("./routes/vehicle.route")
+const { bookingRouter } = require("./routes/Booking.route")
+const { vehicleRouter } = require("./routes/Vehicle.route")
 const { seedData } = require("./seed");
 const cors = require('cors')
 
