@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../Styles//Login.css";
 import { useNavigate } from "react-router-dom";
+import "../Styles//Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -61,6 +61,7 @@ const Login = () => {
         </label>
         <br />
         <button type="submit">Login</button>
+        <p>If you are a new user, please <a href="/signup">Register</a> first.</p>
         {error && <p>{error}</p>}
       </form>
     </div>

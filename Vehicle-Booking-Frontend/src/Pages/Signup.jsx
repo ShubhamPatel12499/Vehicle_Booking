@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../Styles//Signup.css";
 import { useNavigate } from "react-router-dom";
+import "../Styles//Signup.css";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -79,8 +79,10 @@ const Signup = () => {
             <option value="Others">Others</option>
           </select>
         </label>
+     
         <br />
         <button type="submit">Signup</button>
+        <p>If you are already registered, please <a href="/">Login</a>.</p>
         {error && <p>{error}</p>}
       </form>
     </div>

@@ -1,0 +1,37 @@
+  .bookings-container {
+    padding: 20px;
+  }
+  
+  .button-container {
+    display: flex;
+  }
+  
+  .book-vehicle-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .book-vehicle-button:hover {
+    background-color: #66696b;
+  }
+  
+  .booking-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .booking-card {
+    width:80%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 20px;
+  }
+  

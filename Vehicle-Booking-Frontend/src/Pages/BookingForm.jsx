@@ -40,9 +40,8 @@ const BookingForm = () => {
 
   // Send form data to backend
   const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try{
+  event.preventDefault();
+  try {
     const formData = {
       firstName: firstName,
       lastName: lastName,
@@ -52,15 +51,21 @@ const BookingForm = () => {
       startDate: startDate,
       endDate: endDate,
     };
-    console.log(formData);
+
     const response = await axios.post('http://localhost:8080/booking/addBooking', formData);
-      alert("Booked successfully!!")
+
+    if (response.status === 201) {
+      alert("Booking successfully!!");
       console.log('Booking created successfully:', response.data);
-    } catch (error) {
-      alert("Error creating booking, Please try again!")
+    }
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      alert(error.response.data);
+    } else {
       console.error('Error creating booking:', error);
     }
-  };
+  }
+};
 
   useEffect(() => {
     if (vehicleType !== '') {
