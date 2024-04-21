@@ -36,8 +36,8 @@ cd Vehicle-Booking-App cd Vehicle-Booking-Frontend npm install npm start
 You can use this app for a Vehicle Booking.
 
 ## Credentials
-Email: abc@gmail.com
-Password: 1234
+- Email: abc@gmail.com
+- Password: 1234
 
 ## APIs Used
 If your application relies on external APIs, document them and include any necessary links or references.
