@@ -23,11 +23,12 @@ video walkthough of all of the features
 video walkthough of codebase 
 
 ## Features
-List out the key features of your application.
-
-- Feature 1
-- Feature 2
-- Feature 3
+- View Avaliable Vehicles
+- Create Booking of Vehicle
+- View all Booked Vehicle
+- Authentications
+- Login, Signup & Logout
+- Responsive Design
 
 ## Installation & Getting started
 cd Vehicle-Booking-App cd Vehicle-Booking-Frontend npm install npm start
@@ -39,13 +40,15 @@ You can use this app for a Vehicle Booking.
 - Email: abc@gmail.com
 - Password: 1234
 
-## APIs Used
-If your application relies on external APIs, document them and include any necessary links or references.
-
-## API Endpoints
-In case of Backend Applications provide a list of your API endpoints, methods, brief descriptions, and examples of request/response.
-GET /api/items - retrieve all items
-POST /api/items - create a new item
+## APIs Used & Endpoints
+- GET /vehicle/getVehicles - Get all vehicles data
+- GET /vehicle/getVehicletypes - Get type of vehicles
+- GET /vehicle/models/:type - Get model of vehicles
+- POST /booking/addBooking - Add Booking of vehicle
+- GET /booking/allBookings - Get all booked vehicles data
+- DELETE /booking/deleteAllBookings - Delete all vehicle data
+- POST /users/login - Login the user
+- POST /users/register - Register the user
 
 
 ## Technology Stack
