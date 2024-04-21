@@ -7,14 +7,17 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   //Login Logic
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const response = await axios.post(
-        "http://localhost:8080/users/login",
+        "https://vehicle-booking-backend-yp4t.onrender.com/users/login",
         {
           email,
           password,
@@ -33,6 +36,8 @@ const Login = () => {
       console.error("Error logging in:", error);
       alert("Please Register First!");
       navigate("/signup");
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -62,6 +67,12 @@ const Login = () => {
         <br />
         <button type="submit">Login</button>
         <p>If you are a new user, please <a href="/signup">Register</a> first.</p>
+        {loading && ( 
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+          <div>Loading...</div>
+        </div>
+        )}
         {error && <p>{error}</p>}
       </form>
     </div>

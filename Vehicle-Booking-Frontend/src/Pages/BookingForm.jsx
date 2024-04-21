@@ -14,6 +14,7 @@ const BookingForm = () => {
   const [vehicleModels, setVehicleModels] = useState([]);
   const [loading, setLoading] = useState(false);
   const [vehicleTypes, setVehicleTypes] = useState([]);
+  const today = new Date().toISOString().split('T')[0];
 
   // Check if the current step requires any fields to be filled
   const nextStep = () => {
@@ -41,6 +42,8 @@ const BookingForm = () => {
   // Send form data to backend
   const handleSubmit = async (event) => {
   event.preventDefault();
+
+  setLoading(true);
   try {
     const formData = {
       firstName: firstName,
@@ -52,10 +55,10 @@ const BookingForm = () => {
       endDate: endDate,
     };
 
-    const response = await axios.post('http://localhost:8080/booking/addBooking', formData);
+    const response = await axios.post('https://vehicle-booking-backend-yp4t.onrender.com/booking/addBooking', formData);
 
     if (response.status === 201) {
-      alert("Booking successfully!!");
+      alert("Booking successful!");
       console.log('Booking created successfully:', response.data);
     }
   } catch (error) {
@@ -64,6 +67,8 @@ const BookingForm = () => {
     } else {
       console.error('Error creating booking:', error);
     }
+  } finally {
+    setLoading(false); 
   }
 };
 
@@ -75,7 +80,7 @@ const BookingForm = () => {
 
   // Fetch vehicle types
   useEffect(() => {
-    axios.get('http://localhost:8080/vehicle/getVehicletypes')
+    axios.get('https://vehicle-booking-backend-yp4t.onrender.com/vehicle/getVehicletypes')
       .then(response => {
         setVehicleTypes(response.data); 
       })
@@ -90,7 +95,7 @@ const BookingForm = () => {
   
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:8080/vehicle/models/${selectedType}`);
+        const response = await axios.get(`https://vehicle-booking-backend-yp4t.onrender.com/vehicle/models/${selectedType}`);
         const models = response.data;
   
         // Filter out duplicate model options
@@ -104,6 +109,14 @@ const BookingForm = () => {
         console.error('Error fetching vehicle models:', error);
         setLoading(false);
       }
+  };
+
+  //End date must be after the start date
+  const calculateMinEndDate = () => {
+    if (!startDate) return today; 
+    const nextDate = new Date(startDate);
+    nextDate.setDate(nextDate.getDate() + 1); 
+    return nextDate.toISOString().split('T')[0];
   };
 
   const renderStep = () => {
@@ -161,30 +174,30 @@ const BookingForm = () => {
           </div>
         );
     case 3:
-  return (
-    <div>
-      <h2>Step {step}</h2>
-      <label>
-        Vehicle Type:
-        <br />
-        {vehicleTypes.map((type, index) => (
-          <React.Fragment key={index}>
-            <input
-              type="radio"
-              name="vehicleType"
-              value={type}
-              checked={vehicleType === type}
-              onChange={(e) => setVehicleType(e.target.value)}
-            />{' '}
-            {type}
-            <span style={{ marginRight: '10px' }}></span>
-          </React.Fragment>
-        ))}
-      </label>
-      <button onClick={nextStep}>Next</button>
-      <button onClick={prevStep}>Back</button>
-    </div>
-  );
+      return (
+        <div>
+          <h2>Step {step}</h2>
+          <label>
+            Vehicle Type:
+            <br />
+            {vehicleTypes.map((type, index) => (
+              <React.Fragment key={index}>
+                <input
+                  type="radio"
+                  name="vehicleType"
+                  value={type}
+                  checked={vehicleType === type}
+                  onChange={(e) => setVehicleType(e.target.value)}
+                />{' '}
+                {type}
+                <span style={{ marginRight: '10px' }}></span>
+              </React.Fragment>
+            ))}
+          </label>
+          <button onClick={nextStep}>Next</button>
+          <button onClick={prevStep}>Back</button>
+        </div>
+      );
       case 4:
         return (
           <div>
@@ -223,6 +236,7 @@ const BookingForm = () => {
               <input
                 type="date"
                 value={startDate}
+                min={today}
                 onChange={(e) => setStartDate(e.target.value)}
               />
             </label>
@@ -231,6 +245,7 @@ const BookingForm = () => {
               <input
                 type="date"
                 value={endDate}
+                min={calculateMinEndDate()}
                 onChange={(e) => setEndDate(e.target.value)}
               />
             </label>
@@ -254,7 +269,3 @@ const BookingForm = () => {
 };
 
 export default BookingForm;
-
-
-
-

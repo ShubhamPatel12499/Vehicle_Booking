@@ -68,3 +68,52 @@
   .booking-form .step-container button:last-child {
     background-color: #ddd;
   }
+
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: black;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (min-width: 300px) and (max-width: 700px) {
+    .booking-form-container {
+      max-width: 80%;
+    }
+
+    .booking-form input[type="text"],
+    .booking-form input[type="date"] {
+      width: 100%;
+    }
+
+    .booking-form .step-container button {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+
+  @media (min-width: 700px) and (max-width: 900px) {
+    .booking-form-container {
+      max-width: 70%;
+    }
+  }
