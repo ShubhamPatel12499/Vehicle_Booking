@@ -52,7 +52,7 @@ You can use this app for a Vehicle Booking.
 
 
 ## Technology Stack
-- Frontend - Reaxt.js
+- Frontend - React.js
 - Backend - Node.js
 - Express.js
 - DataBase - MySQL
