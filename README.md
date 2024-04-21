@@ -46,7 +46,7 @@ You can use this app for a Vehicle Booking.
 - GET /vehicle/models/:type - Get model of vehicles
 - POST /booking/addBooking - Add Booking of vehicle
 - GET /booking/allBookings - Get all booked vehicles data
-- DELETE /booking/deleteAllBookings - Delete all vehicle data
+- DELETE /booking/deleteAllBookings - Delete all vehicles data
 - POST /users/login - Login the user
 - POST /users/register - Register the user
 
