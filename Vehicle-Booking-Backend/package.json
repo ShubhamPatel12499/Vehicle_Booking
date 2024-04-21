@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,8 +16,10 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^6.8.3",
+    "mysql2": "^3.9.6",
     "nodemon": "^2.0.20",
     "pdfkit": "^0.15.0",
+    "sequelize": "^6.37.3",
     "uuid": "^9.0.1"
   }
 }

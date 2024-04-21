@@ -1,23 +1,24 @@
-const express=require("express")
-const {connection}=require("./config/db")
-const {userRouter}=require("./routes/User.route")
-const { bookingRouter } = require("./routes/Booking.route")
-const { vehicleRouter } = require("./routes/Vehicle.route")
+const express = require("express");
+const {sequelize} = require("./config/db"); 
+const { userRouter } = require("./routes/User.route");
+const { bookingRouter } = require("./routes/Booking.route");
+const { vehicleRouter } = require("./routes/Vehicle.route");
 const { seedData } = require("./seed");
-const cors = require('cors')
+const cors = require('cors');
 
-const app=express()
+const app = express();
 require("dotenv").config();
 
 app.use(cors({
-    origin:"*"
-}))
-app.use(express.json())
+  origin: "*"
+}));
+app.use(express.json());
 
-app.use("/users",userRouter)
-app.use("/booking",bookingRouter)
-app.use("/vehicle",vehicleRouter)
+app.use("/users", userRouter);
+app.use("/booking", bookingRouter);
+app.use("/vehicle", vehicleRouter);
 
+//Home Route
 app.get("/", (req, res) => {
     res.send("Welcome to the Vehicle Booking");
 });
@@ -26,18 +27,22 @@ app.get("/", (req, res) => {
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send("Something went wrong!");
-});
+  });
 
 const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, async () => {
-    try {
-        await connection;
-        console.log("Connected to DB");
-        await seedData();
-    } catch (err) {
-        console.error("Not connected to DB");
-        console.error(err);
-    }
-    console.log(`Server is running on port ${PORT}`);
-});
+// Sync Sequelize models with the database
+sequelize.sync({ force: false }) 
+  .then(async () => {
+    console.log("Connected to DB");
+    await seedData();
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error("Not connected to DB");
+    console.error(err);
+  });
+
+

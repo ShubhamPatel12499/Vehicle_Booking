@@ -1,12 +1,16 @@
 const express = require("express");
-const { vehicleModel } = require("../models/Vehicle.model");
+const { Vehicle } = require("../models/Vehicle.model");
 const vehicleRouter = express.Router();
 
-//For Fetch vehicles with type
+//For Fetch all vehicle types
 vehicleRouter.get("/getVehicletypes", async (req, res) => {
     try {
-        const types = await vehicleModel.distinct('type');
-        res.status(200).json(types);
+        const types = await Vehicle.findAll({
+            attributes: ['type'],
+            group: ['type']
+        });
+        const typeList = types.map(vehicle => vehicle.type);
+        res.status(200).json(typeList);
     } catch (err) {
         console.error('Error fetching vehicle types:', err);
         res.status(500).send("Error fetching vehicle types");
@@ -16,7 +20,7 @@ vehicleRouter.get("/getVehicletypes", async (req, res) => {
 //For Fetch all vehicles with type, model, and numberOfWheels
 vehicleRouter.get("/getVehicles", async (req, res) => {
     try {
-        const vehicles = await vehicleModel.find({}, 'type model wheels'); 
+        const vehicles = await Vehicle.findAll({ attributes: ['type', 'model', 'wheels'] }); 
         res.status(200).json(vehicles);
     } catch (err) {
         console.error('Error fetching vehicles:', err);
@@ -24,12 +28,12 @@ vehicleRouter.get("/getVehicles", async (req, res) => {
     }
 });
 
-//For Fetch vehicles with model
+// For Fetch vehicles with model
 vehicleRouter.get("/models/:type", async (req, res) => {
     const { type } = req.params;
     try {
-        const models = await vehicleModel.find({ type });
-        res.status(200).json(models);
+        const vehicles = await Vehicle.findAll({ where: { type } });
+        res.status(200).json(vehicles);
     } catch (err) {
         console.error('Error fetching vehicle models:', err);
         res.status(500).send("Error fetching vehicle models");
@@ -39,3 +43,4 @@ vehicleRouter.get("/models/:type", async (req, res) => {
 module.exports = {
     vehicleRouter
 };
+

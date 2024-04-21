@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
+const { Sequelize } = require('sequelize');
+require('dotenv').config();
 
-const connection = mongoose.connect(process.env.mongoURL)
+const sequelize = new Sequelize(process.env.DB_Connection_URL)
 
-module.exports={
-    connection
-}
+module.exports = {
+    sequelize
+};

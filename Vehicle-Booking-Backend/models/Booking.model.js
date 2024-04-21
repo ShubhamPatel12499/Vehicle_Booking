@@ -1,19 +1,43 @@
-const mongoose = require("mongoose");
+const { DataTypes } = require('sequelize'); 
+const {sequelize} = require('../config/db');
 
-const bookingSchema = mongoose.Schema({
-    userId: { type: String, required: true }, 
-    vehicleId: { type: String, required: true },
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true }, 
-    numberOfWheels: { type: Number, required: true }, 
-    vehicleType: { type: String, required: true }, 
-    specificModel: { type: String, required: true }, 
-    startDate: { type: Date, required: true },
-    endDate: { type: Date, required: true }
+const Booking = sequelize.define('Booking', {
+  userId: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  vehicleId: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  firstName: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  lastName: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  numberOfWheels: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  vehicleType: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  specificModel: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  startDate: {
+    type: DataTypes.DATE,
+    allowNull: false
+  },
+  endDate: {
+    type: DataTypes.DATE,
+    allowNull: false
+  }
 });
 
-const bookingModel = mongoose.model("Booking", bookingSchema);
-
-module.exports = {
-    bookingModel
-};
+module.exports = {Booking};

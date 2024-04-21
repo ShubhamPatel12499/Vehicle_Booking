@@ -1,7 +1,8 @@
 const express = require("express");
-const { bookingModel } = require("../models/Booking.model");
+const { Booking } = require("../models/Booking.model");
 const bookingRouter = express.Router();
 const { v4: uuidv4 } = require('uuid'); 
+const { Op } = require('sequelize');
 
 //For Add Booking
 bookingRouter.post("/addBooking", async (req, res) => {
@@ -12,21 +13,22 @@ bookingRouter.post("/addBooking", async (req, res) => {
         const vehicleId = uuidv4(); 
 
         // Check for overlapping bookings
-        const existingBooking = await bookingModel.findOne({
-            vehicleType,
-            specificModel,
-            $or: [
-                { startDate: { $lte: endDate }, endDate: { $gte: startDate } },
-                { startDate: { $lte: startDate }, endDate: { $gte: startDate } }
-            ]
+        const existingBooking = await Booking.findOne({
+            where: {
+                vehicleType,
+                specificModel,
+                [Op.or]: [
+                    { startDate: { [Op.lt]: endDate }, endDate: { [Op.gt]: startDate } },
+                    { startDate: { [Op.lt]: startDate }, endDate: { [Op.gt]: startDate } }
+                ]
+            }
         });
-
         if (existingBooking) {
-            return res.status(400).send("Oops This Vehicle is already booked for the specified date range, Please go for another one!");
+            return res.status(400).send("Oops! This vehicle is already booked for the specified date range. Please choose another one.");
         }
 
         // Create new booking
-        const newBooking = new bookingModel({ 
+        await Booking.create({ 
             userId, 
             vehicleId, 
             startDate, 
@@ -37,7 +39,6 @@ bookingRouter.post("/addBooking", async (req, res) => {
             vehicleType, 
             specificModel 
         });
-        await newBooking.save();
         res.status(201).send("Booking created successfully");
 
     } catch (err) {
@@ -46,10 +47,10 @@ bookingRouter.post("/addBooking", async (req, res) => {
     }
 });
 
-// For Fetch all bookings
+// For fetching all bookings
 bookingRouter.get("/allBookings", async (req, res) => {
     try {
-      const bookings = await bookingModel.find();
+      const bookings = await Booking.findAll();
       res.status(200).json(bookings);
     } catch (error) {
       console.error("Error fetching bookings:", error);
@@ -57,7 +58,17 @@ bookingRouter.get("/allBookings", async (req, res) => {
     }
   });
 
+// For Delete all bookings
+bookingRouter.delete("/deleteAllBookings", async (req, res) => {
+    try {
+        await Booking.destroy({ truncate: true }); 
+        res.status(200).send("All bookings deleted successfully");
+    } catch (error) {
+        console.error("Error deleting bookings:", error);
+        res.status(500).send("Error deleting bookings");
+    }
+});
+
 module.exports = {
     bookingRouter
 };
-
