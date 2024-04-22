@@ -7,7 +7,7 @@ Get ready to book your ride stress-free! Our app, crafted with Node.js, React, a
 Fullstack
 
 ## Deplolyed App
-- Frontend: https://662569fd6e15edf60dfb4740--coruscating-rolypoly-7f28f9.netlify.app
+- Frontend: https://6625f340b7c8a14c355bbb3b--stalwart-semifreddo-176cd6.netlify.app
 - Backend: https://vehicle-booking-backend-yp4t.onrender.com
 - Database: https://console.aiven.io/account/a4aa6557e4d9/project/shubhampatel12499-9f8b/services/mysql-12499/databases
 
