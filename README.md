@@ -17,15 +17,16 @@ Vehicle-Booking-App/
 ├─ Vehicle-Booking-Frontend/
 
 ## Video Walkthrough of the project
-video walkthough of all of the features 
+https://drive.google.com/file/d/1wVN8WVf3oR0Eq3J46zGe4HlGSFpTAiHV/view?usp=sharing 
 
 ## Video Walkthrough of the codebase
-video walkthough of codebase 
+https://drive.google.com/file/d/1OPkydn9TyaRwAzV23_Zz5lm0tetNjR-H/view?usp=sharing
 
 ## Features
 - View Avaliable Vehicles
 - Create Booking of Vehicle
 - View all Booked Vehicle
+- Delete Booked Vehicle
 - Authentications
 - Login, Signup & Logout
 - Responsive Design
@@ -47,6 +48,7 @@ You can use this app for a Vehicle Booking.
 - POST /booking/addBooking - Add Booking of vehicle
 - GET /booking/allBookings - Get all booked vehicles data
 - DELETE /booking/deleteAllBookings - Delete all vehicles data
+- DELETE /booking//deleteBooking/:id - Delete Booked vehicle data
 - POST /users/login - Login the user
 - POST /users/register - Register the user
 
