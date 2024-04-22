@@ -17,7 +17,7 @@ Vehicle-Booking-App/
 ├─ Vehicle-Booking-Frontend/
 
 ## Video Walkthrough of the project
-https://drive.google.com/file/d/1wVN8WVf3oR0Eq3J46zGe4HlGSFpTAiHV/view?usp=sharing 
+https://drive.google.com/file/d/1-NZM8LoIjItHvjKyfoMEYy1We8eZY5b3/view?usp=sharing 
 
 ## Video Walkthrough of the codebase
 https://drive.google.com/file/d/1OPkydn9TyaRwAzV23_Zz5lm0tetNjR-H/view?usp=sharing
