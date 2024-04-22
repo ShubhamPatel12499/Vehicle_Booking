@@ -7,7 +7,7 @@ Get ready to book your ride stress-free! Our app, crafted with Node.js, React, a
 Fullstack
 
 ## Deplolyed App
-- Frontend: https://6625f340b7c8a14c355bbb3b--stalwart-semifreddo-176cd6.netlify.app
+- Frontend: https://66263a6169b67e0637b692e8--luxury-griffin-640a43.netlify.app
 - Backend: https://vehicle-booking-backend-yp4t.onrender.com
 - Database: https://console.aiven.io/account/a4aa6557e4d9/project/shubhampatel12499-9f8b/services/mysql-12499/databases
 
@@ -27,8 +27,7 @@ https://drive.google.com/file/d/1OPkydn9TyaRwAzV23_Zz5lm0tetNjR-H/view?usp=shari
 - Create Booking of Vehicle
 - View all Booked Vehicle
 - Delete Booked Vehicle
-- Authentications
-- Login, Signup & Logout
+- Authentications for Dates
 - Responsive Design
 
 ## Installation & Getting started
@@ -36,10 +35,6 @@ cd Vehicle-Booking-App cd Vehicle-Booking-Frontend npm install npm start
 
 ## Usage
 You can use this app for a Vehicle Booking.
-
-## Credentials
-- Email: abc@gmail.com
-- Password: 1234
 
 ## APIs Used & Endpoints
 - GET /vehicle/getVehicles - Get all vehicles data
@@ -49,9 +44,6 @@ You can use this app for a Vehicle Booking.
 - GET /booking/allBookings - Get all booked vehicles data
 - DELETE /booking/deleteAllBookings - Delete all vehicles data
 - DELETE /booking/deleteBooking/:id - Delete Booked vehicle data
-- POST /users/login - Login the user
-- POST /users/register - Register the user
-
 
 ## Technology Stack
 - Frontend - React.js
@@ -79,10 +71,5 @@ You can use this app for a Vehicle Booking.
 <h4>Step-5</h4>
 <img src="https://github.com/ShubhamPatel12499/Task-Management-App/assets/98810944/b275f501-4b6b-4c5b-9cb1-9e22d87996c7"/>
 
-<h2>Login Page</h2>
-<img src="https://github.com/ShubhamPatel12499/Vehicle_Booking/assets/98810944/b5afc64c-7ecb-4f61-96bb-b5b064607108"/>
-
-<h2>Signup Page</h2>
-<img src="https://github.com/ShubhamPatel12499/Vehicle_Booking/assets/98810944/f37e5666-f09f-477c-9618-7e019bfc5242"/>
 
 
