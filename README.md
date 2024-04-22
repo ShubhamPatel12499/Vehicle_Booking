@@ -60,13 +60,13 @@ You can use this app for a Vehicle Booking.
 - DataBase - MySQL
 - ORM - sequelize
 
+## Images of Project
 <h2>Avaliable Vehicles Page</h2>
 <img src="https://github.com/ShubhamPatel12499/Vehicle_Booking/assets/98810944/c6c0b773-7136-4d0a-b570-c266caf8c490"/>
 
 <h2>Booked Vehicles Page</h2>
 <img src="https://github.com/ShubhamPatel12499/Vehicle_Booking/assets/98810944/b703052f-5c1d-4fed-823f-723024d26d2c"/>
 
-<h2>Booked Vehicles Page</h2>
 <h2>Vehicle Booking Form</h2>
 <h4>Step-1</h4>
 <img src="https://github.com/ShubhamPatel12499/Vehicle_Booking/assets/98810944/90336ba4-35e0-41d7-b154-cd6a50956764"/>
