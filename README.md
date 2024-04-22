@@ -48,7 +48,7 @@ You can use this app for a Vehicle Booking.
 - POST /booking/addBooking - Add Booking of vehicle
 - GET /booking/allBookings - Get all booked vehicles data
 - DELETE /booking/deleteAllBookings - Delete all vehicles data
-- DELETE /booking//deleteBooking/:id - Delete Booked vehicle data
+- DELETE /booking/deleteBooking/:id - Delete Booked vehicle data
 - POST /users/login - Login the user
 - POST /users/register - Register the user
 
