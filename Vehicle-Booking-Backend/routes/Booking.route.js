@@ -69,6 +69,22 @@ bookingRouter.delete("/deleteAllBookings", async (req, res) => {
     }
 });
 
+// For Delete a specific booking
+bookingRouter.delete("/deleteBooking/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+      const deletedBooking = await Booking.destroy({ where: { id } });
+      if (deletedBooking === 1) {
+        res.status(200).send("Booking deleted successfully");
+      } else {
+        res.status(404).send("Booking not found");
+      }
+    } catch (error) {
+      console.error("Error deleting booking:", error);
+      res.status(500).send("Error deleting booking");
+    }
+  });
+
 module.exports = {
     bookingRouter
 };
