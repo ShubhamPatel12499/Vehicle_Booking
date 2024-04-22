@@ -1,6 +1,5 @@
 const express = require("express");
 const {sequelize} = require("./config/db"); 
-const { userRouter } = require("./routes/User.route");
 const { bookingRouter } = require("./routes/Booking.route");
 const { vehicleRouter } = require("./routes/Vehicle.route");
 const { seedData } = require("./seed");
@@ -14,7 +13,6 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.use("/users", userRouter);
 app.use("/booking", bookingRouter);
 app.use("/vehicle", vehicleRouter);
 
