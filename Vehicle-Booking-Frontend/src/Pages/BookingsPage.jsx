@@ -27,7 +27,7 @@ const BookingsPage = () => {
   }, []);
 
   const handleVehicles = () => {
-    navigate("/allVehicles");
+    navigate("/");
   };
 
   //For Filter deleted bookings 

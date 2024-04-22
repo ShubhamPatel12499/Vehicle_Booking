@@ -26,11 +26,6 @@ useEffect(() => {
     });
 }, []);
 
-//For Logout: Redirect to Login page
-const handleLogout = () => {
-  navigate("/");
-};
-
 //Toggle Functionality
 const handleBookVehicle = () => {
   setShowBookingForm(prevState => !prevState); 
@@ -46,7 +41,6 @@ return (
      <div className="button-container">
         <button className="book-vehicle-button" onClick={handleBookVehicle}>Book Vehicle</button>
         <button className="booked-vehicle-button" onClick={handleBookedVehicle}>Show Booked Vehicles</button>
-        <button className="logout-button" onClick={handleLogout}>Logout</button>
      </div>
      {loading && ( 
         <div className="loading-overlay">
