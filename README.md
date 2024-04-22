@@ -20,7 +20,7 @@ Vehicle-Booking-App/
 https://drive.google.com/file/d/1-NZM8LoIjItHvjKyfoMEYy1We8eZY5b3/view?usp=sharing 
 
 ## Video Walkthrough of the codebase
-https://drive.google.com/file/d/1OPkydn9TyaRwAzV23_Zz5lm0tetNjR-H/view?usp=sharing
+https://drive.google.com/file/d/1E-H1uQqpSUn2ZZ8kEgJg2H4CofONKZHk/view?usp=sharing
 
 ## Features
 - View Avaliable Vehicles
